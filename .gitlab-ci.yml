@@ -18,7 +18,7 @@ build:docker:
   stage: build
   image: docker:stable
   services:
-    - name: docker:19.03-dind
+    - name: docker:18.09-dind
       entrypoint: ["dockerd-entrypoint.sh"]
       alias: dockerd
   variables:
