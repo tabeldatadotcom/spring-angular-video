@@ -20,8 +20,11 @@ build:docker:
   stage: build
   image: docker:latest
   services:
-    - docker:dind
+    - name: docker:dind
+      entrypoint: ["dockerd-entrypoint.sh"]
+      alias: dockerd
   variables:
+    DOCKER_HOST: tcp://dockerd:2375
     DOCKER_TLS_CERTDIR: "/certs"
   before_script:
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
