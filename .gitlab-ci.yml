@@ -1,6 +1,4 @@
 variables:
-  REGISTRY_USER : 
-  REGISTRY_PASS : 
   IMAGE_NAME : noviantoro/angular-webapp
 
 stages:
@@ -24,9 +22,9 @@ build:docker:
       entrypoint: ["dockerd-entrypoint.sh"]
       alias: dockerd
   variables:
-    DOCKER_HOST: tcp://localhost:2375
+    DOCKER_HOST: tcp://dockerd:2375
     DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: ""
+    DOCKER_TLS_CERTDIR: "/certs"
   before_script:
     - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin
   script:
