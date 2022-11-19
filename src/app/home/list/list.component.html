@@ -1,0 +1,57 @@
+<!-- <div class="container">
+    <div class="buttons mt-3">
+        <button type="button" class="btn btn-primary" [routerLink]="['/', 'add', 'customer']">Add</button>
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">City</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of listCustomer; index as i">
+                <th scope="row">{{i + 1}}</th>
+                <td>{{data.firstName}}</td>
+                <td>{{data.lastName}}</td>
+                <td>{{data.address}}</td>
+                <td>{{data.city}}</td>
+                <td><button type="button" class="btn btn-info" [routerLink]="['/', 'order', data.id]">Orders</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+
+<div class="container">
+    <div class="title">
+        <h3 style="color: rgb(255, 255, 255);">Customers</h3>
+        <button type="button" class="btn btn-info" [routerLink]="['/', 'add', 'customer']">Add</button>
+      </div>
+    <div class="row">
+        <div class="col-xl-6 mb-4" *ngFor="let data of listCustomer; index as i">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <img [src]="data.imageUrl" alt="profile image"
+                                style="width: 45px; height: 45px" class="rounded-circle" />
+                            <div class="ms-3">
+                                <p class="fw-bold mb-1">{{data.firstName}} {{data.lastName}}</p>
+                                <p class="text-muted mb-0">{{data.address}}, {{data.city}}</p>
+                            </div>
+                        </div>
+                        <span class="badge rounded-pill badge-primary">Active</span>
+                    </div>
+                </div>
+                <div class="card-footer border-0 bg-light p-2 d-flex justify-content-around">
+                    <a class="btn btn-link m-0 text-reset" [routerLink]="['/', 'order', data.id]" role="button" data-ripple-color="primary">Orders<i
+                            class="fas fa-envelope ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

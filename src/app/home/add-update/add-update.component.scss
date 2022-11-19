@@ -1,0 +1,19 @@
+.customer-form {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.left {
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+.right {
+    flex: 2;
+}

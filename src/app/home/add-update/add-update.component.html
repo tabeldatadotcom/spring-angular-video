@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="customer-form" *ngIf="type=='customer'">
+        <div class="left">
+            <img [src]="imageSrc" alt="profile"
+                style=" width:250px">
+            <input class="custom-file-input" style="width: 100px; margin: 20px 20px;" type="file" value="Upload"
+            (change)="onFileChange($event)">
+        </div>
+        <div class="right">
+            <form [formGroup]="formInputCustomer">
+                <div class="form-group mt-2">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp"
+                        placeholder="First Name" formControlName="firstName">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name"
+                        formControlName="lastName">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="Address"
+                        formControlName="address">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="city" formControlName="city">
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="btn btn-primary mt-3" (click)="save()">Submit</button>
+                    <button type="button" class="btn btn-warning mt-3" style="margin-left: 20px;" routerLink="/">Back</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <form *ngIf="type=='order'" [formGroup]="formInputOrder">
+        <div class="form-group mt-2">
+            <label for="customerId">Customer Id</label>
+            <input type="text" class="form-control" id="customerId" aria-describedby="emailHelp"
+                placeholder="Customer Id" formControlName="customerId">
+        </div>
+        <div class="form-group mt-2">
+            <label for="product">Product</label>
+            <input type="text" class="form-control" id="product" placeholder="Product" formControlName="product">
+        </div>
+        <div class="form-group mt-2">
+            <label for="quantity">Quantity</label>
+            <input type="text" class="form-control" id="quantity" placeholder="Quantity" formControlName="quantity">
+        </div>
+        <div class="buttons">
+            <button type="submit" class="btn btn-primary mt-3" (click)="save()">Submit</button>
+            <button type="button" class="btn btn-warning mt-3" style="margin-left: 20px;" routerLink="/">Back</button>
+        </div>
+        
+    </form>
+</div>

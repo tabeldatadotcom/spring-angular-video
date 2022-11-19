@@ -1,0 +1,50 @@
+variables:
+  REGISTRY_USER : 
+  REGISTRY_PASS : 
+  IMAGE_NAME : noviantoro/angular-webapp
+
+stages:
+  # - dependencies
+  - build
+  # - deploy
+
+# build:app:
+#   stage: dependencies
+#   image: node:18-alpine
+#   before_script:
+#     - 'npm ci'
+#   script:
+#     - 'npm run build'
+
+build:docker:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  before_script:
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
+  script:
+    - docker build -t $IMAGE_NAME .
+    - docker push $IMAGE_NAME
+
+# deploy:kubernetes:
+#   stage: deploy
+#   image: alpine
+#   before_script:
+#     - apk --no-cache add curl
+#     - curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+#     - chmod +x ./kubectl
+#     - mv ./kubectl /usr/local/bin/kubectl
+#     - ls
+#     - export KUBECONFIG=kubeconfig.yaml
+#   script:
+#     - 
+#   after_script:
+#     - kubectl rollout restart deployment/webapp
+
+
+
+
+
