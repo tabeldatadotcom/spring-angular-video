@@ -1,6 +1,6 @@
 ARG NGINX_VERSION=mainline
 
-FROM node:16-alpine AS webapp-build
+FROM node:18-alpine AS webapp-build
 WORKDIR /app
 COPY . .
 RUN npm ci && npm run build
