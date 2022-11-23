@@ -1,12 +1,13 @@
 ARG NGINX_VERSION=mainline
 
-FROM node:18-alpine AS webapp-build
-WORKDIR /app
-COPY . .
-RUN npm ci && npm run build
+# build application phase (additional)
+
+# FROM node:18-alpine AS webapp-build
+# WORKDIR /app
+# COPY . .
+# RUN npm ci && npm run build
 
 FROM nginx:$NGINX_VERSION
-# ARG BUILD_FOLDER=--from=webapp-build /app/dist/webapp
 
 ENV APPLICATION_PORT=80
 ENV NGINX_ROOT_DOCUMENT=/var/www/html

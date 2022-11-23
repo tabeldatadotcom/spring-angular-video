@@ -45,7 +45,7 @@ export class AddUpdateComponent implements OnInit {
     })
 
     this.formInputOrder = this.formBuilder.group({
-      customerId: this.formBuilder.control({value: this.customerId, disabled: true}),
+      customerId: this.formBuilder.control(this.customerId),
       product: this.formBuilder.control(null),
       quantity: this.formBuilder.control(null)
     })
@@ -71,14 +71,14 @@ export class AddUpdateComponent implements OnInit {
     if (this.type == 'customer') {
 
       this.service.saveImage(this.imageFile).subscribe(resp => {
-        if (resp.status == 200) {
+        if (resp.status == 200 || resp.status == 201) {
           console.log(`berhasil ${resp.body.imageUrl}`);
           this.formInputCustomer.patchValue({
             imageUrl: resp.body.imageUrl
           })
 
           this.service.save(this.formInputCustomer.value).subscribe(resp => {
-            if (resp.status == 200) {
+            if (resp.status == 200 || resp.status == 201) {
               this.router.navigate(['']);
             }
           })
@@ -89,7 +89,7 @@ export class AddUpdateComponent implements OnInit {
     } else {
       this.service.saveOrder(this.formInputOrder.value).subscribe(resp => {
         if (resp.status == 200) {
-          this.router.navigate(['order', '']);
+          this.router.navigate(['order', this.customerId]);
         }
       })
     }
