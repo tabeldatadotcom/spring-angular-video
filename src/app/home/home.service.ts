@@ -29,7 +29,7 @@ export class HomeService {
   saveImage(file: File){
     const data : FormData = new FormData();
     data.append('file', file);
-    
+
     return this.http.post<any>(`${environment.api}/api/minio/save`, data, {observe: "response"})
   }
 
@@ -41,5 +41,17 @@ export class HomeService {
 
   saveOrder(data: SaveOrder){
     return this.http.post<any>(`${environment.api}/api/order/save`, data, {observe: "response"})
+  }
+
+  updateOrder(id: number, data: SaveOrder){
+    return this.http.put<any>(`${environment.api}/api/order/update/${id}`, data, {observe: "response"})
+  }
+
+  findByOrderId(id: number){
+    return this.http.get<Order>(`${environment.api}/api/order/${id}`, {observe: "response"})
+  }
+
+  deleteOrder(id: number){
+    return this.http.delete<Order>(`${environment.api}/api/order/${id}`)
   }
 }

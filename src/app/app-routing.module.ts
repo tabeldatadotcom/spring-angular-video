@@ -14,6 +14,10 @@ const routes: Routes = [
     component: AddUpdateComponent
   },
   {
+    path: "add/order/:id/:type",
+    component: AddUpdateComponent
+  },
+  {
     path: "add/order/:id",
     component: AddUpdateComponent
   },
