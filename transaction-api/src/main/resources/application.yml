@@ -1,0 +1,24 @@
+
+spring:
+  application.name: transaction-api
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${DATABASE_URL:jdbc:postgresql://10.2.0.111:5432/postgres}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:mysecretpassword}
+  sql:
+    init:
+      platform: postgres
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create
+#  spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation= true
+#  spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.PostgreSQLDialect
+#
+#  # Hibernate ddl auto (create, create-drop, validate, update)
+server:
+  port: 8081
+#  spring.jpa.hibernate.ddl-auto= update

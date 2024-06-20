@@ -1,0 +1,15 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: region-api
+
+  data:
+    mongodb:
+      host: ${DATABASE_HOST:10.2.0.111}
+      port: ${DATABASE_PORT:27017}
+      username: ${DATABASE_USERNAME:root}
+      password: ${DATABASE_PASSWORD:secret}
+      database: ${DATABASE_NAME:admin}
+      auto-index-creation: true

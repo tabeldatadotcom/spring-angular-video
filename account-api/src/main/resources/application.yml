@@ -1,0 +1,21 @@
+spring:
+  application.name: account-api
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${DATABASE_URL:jdbc:postgresql://10.2.0.111:5432/postgres}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:mysecretpassword}
+  sql:
+    init:
+      platform: postgres
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create
+  minio:
+    url: http:${MINIO_HOST://10.2.0.111:9000}
+    bucket: ${BUCKER_NAME:mybucket}
+    access-key: ${ACCESS_KEY:admin}
+    storageAccountKey: ${STORAGE_ACCOUNT_KEY:password}
